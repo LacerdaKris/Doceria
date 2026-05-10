@@ -64,19 +64,33 @@ cd "Projeto de extensão"
 
 Se baixou como ZIP, extraia e navegue até a pasta do projeto.
 
-### 2. Crie um ambiente virtual (recomendado)
+### 2. Configure o envio de emails
 
-**Windows:**
-```bash
-python -m venv venv
-venv\Scripts\activate
+Para que as notificações de pedidos funcionem, você precisa configurar as credenciais do Gmail no arquivo `env.txt`:
+
+1. Crie ou edite o arquivo `env.txt` na pasta do projeto:
+```txt
+# Email Configuration
+MAIL_USERNAME=seu-email@gmail.com
+MAIL_PASSWORD=sua-app-password
+MAIL_DEFAULT_SENDER=seu-email@gmail.com
+
+# Admin Email
+ADMIN_EMAIL=youremail@gmail.com
 ```
 
-**Linux/Mac:**
-```bash
-python3 -m venv venv
-source venv/bin/activate
-```
+2. Substitua os valores com suas credenciais reais.
+
+**Importante:** Para usar o Gmail, você precisa criar uma "App Password":
+1. Acesse sua conta Google
+2. Vá em Configurações de Conta > Segurança
+3. Ative a verificação em duas etapas (2FA)
+4. Em "App Passwords", crie uma nova senha para "Mail"
+5. Use essa senha no lugar da senha normal da sua conta
+
+O sistema enviará emails automaticamente para:
+- **Email configurado em ADMIN_EMAIL** (administrador) com detalhes do pedido e observações
+- **Email do cliente** (se fornecido) com confirmação do pedido
 
 ### 3. Instale as dependências
 
@@ -88,42 +102,6 @@ As dependências instaladas serão:
 - Flask==3.0.0 (Framework web)
 - Flask-CORS==4.0.0 (Suporte a CORS para requisições cross-origin)
 - Flask-Mail==0.9.1 (Envio de emails)
-
-### 4. Configure o envio de emails
-
-Para que as notificações de pedidos funcionem, você precisa configurar as credenciais do Gmail:
-
-**Windows (PowerShell):**
-```bash
-$env:MAIL_USERNAME="seu-email@gmail.com"
-$env:MAIL_PASSWORD="sua-app-password"
-$env:MAIL_DEFAULT_SENDER="seu-email@gmail.com"
-```
-
-**Windows (CMD):**
-```cmd
-set MAIL_USERNAME=seu-email@gmail.com
-set MAIL_PASSWORD=sua-app-password
-set MAIL_DEFAULT_SENDER=seu-email@gmail.com
-```
-
-**Linux/Mac:**
-```bash
-export MAIL_USERNAME="seu-email@gmail.com"
-export MAIL_PASSWORD="sua-app-password"
-export MAIL_DEFAULT_SENDER="seu-email@gmail.com"
-```
-
-**Importante:** Para usar o Gmail, você precisa criar uma "App Password":
-1. Acesse sua conta Google
-2. Vá em Configurações de Conta > Segurança
-3. Ative a verificação em duas etapas (2FA)
-4. Em "App Passwords", crie uma nova senha para "Mail"
-5. Use essa senha no lugar da senha normal da sua conta
-
-O sistema enviará emails automaticamente para:
-- **k.cris.poa@gmail.com** (administrador) com detalhes do pedido e observações
-- **Email do cliente** (se fornecido) com confirmação do pedido
 
 ## 🏃 Executando o Projeto
 

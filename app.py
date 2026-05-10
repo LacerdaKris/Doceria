@@ -5,6 +5,19 @@ import sqlite3
 import os
 from datetime import datetime
 
+# Load environment variables from env.txt
+def load_env():
+    env_file = os.path.join(os.path.dirname(__file__), 'env.txt')
+    if os.path.exists(env_file):
+        with open(env_file, 'r') as f:
+            for line in f:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    key, value = line.split('=', 1)
+                    os.environ[key] = value
+
+load_env()
+
 app = Flask(__name__)
 CORS(app)
 
@@ -20,7 +33,7 @@ mail = Mail(app)
 
 DATABASE = 'alicedelice.db'
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-ADMIN_EMAIL = 'k.cris.poa@gmail.com'
+ADMIN_EMAIL = os.environ.get('ADMIN_EMAIL', 'k.cris.poa@gmail.com')
 
 def get_db_connection():
     conn = sqlite3.connect(DATABASE)
