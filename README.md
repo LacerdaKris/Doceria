@@ -334,7 +334,7 @@ Este projeto foi desenvolvido para fins acadêmicos e de extensão universitári
 
 ## 👥 Contato
 
-Para dúvidas ou suporte, entre em contato através do projeto de extensão.
+Para dúvidas ou suporte, entre em contato com a criadora: k_cris_poa@hotmail.com.
 
 ---
 
